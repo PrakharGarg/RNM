@@ -1,0 +1,13 @@
+{
+  "name": "Local Restaurant",
+  "version": "1.0",
+  "description": "New tab extension to show local restaurants",
+  "background" : {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "chrome_url_overrides" : {
+    "newtab": "restaurant.html"
+  },
+  "manifest_version": 2
+}
