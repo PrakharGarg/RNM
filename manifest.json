@@ -2,6 +2,7 @@
   "name": "Local Restaurant",
   "version": "1.0",
   "description": "New tab extension to show local restaurants",
+  "permissions": ["geolocation"],
   "background" : {
     "scripts": ["background.js"],
     "persistent": false
