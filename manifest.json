@@ -2,7 +2,7 @@
   "name": "Local Restaurant",
   "version": "1.0",
   "description": "New tab extension to show local restaurants",
-  "permissions": ["geolocation"],
+  "permissions": ["geolocation", "https://*/"],
   "background" : {
     "scripts": ["background.js"],
     "persistent": false
@@ -10,5 +10,7 @@
   "chrome_url_overrides" : {
     "newtab": "restaurant.html"
   },
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://maps.googleapis.com/*; object-src 'self'",
+
   "manifest_version": 2
 }
