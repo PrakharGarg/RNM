@@ -10,7 +10,7 @@
   "chrome_url_overrides" : {
     "newtab": "restaurant.html"
   },
-  "content_security_policy": "script-src 'self' 'unsafe-eval' https://maps.googleapis.com/*; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://api.pexels.com/*; object-src 'self'",
 
   "manifest_version": 2
 }

@@ -37,5 +37,30 @@ window.onload = function() {
     //   3: timed out
   };
 
+
+  function foodPics(){
+    var data = null;
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        var photos = JSON.parse(this.responseText).photos;
+        var randomNumber = Math.floor(Math.random() * (40))
+        var photoUrl = photos[randomNumber].src.large2x;
+        document.getElementById("image").src=photoUrl;
+        document.getElementById("image").style.opacity = "1";
+      }
+    });
+
+    xhr.open("GET", "https://api.pexels.com/v1/search?query=food+query&per_page=40&page=1");
+    xhr.setRequestHeader("Authorization", "563492ad6f91700001000001c20b062eee2e459f912a73a485e59b66");
+    xhr.setRequestHeader("Cache-Control", "no-cache");
+    xhr.setRequestHeader("Postman-Token", "40fb47e0-1bce-48e6-9d3e-e68b1be37bfb");
+
+    xhr.send(data);
+  }
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+  // foodPics();
 };
