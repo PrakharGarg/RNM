@@ -8,17 +8,16 @@ window.onload = function() {
     startPos = position;
     // document.getElementById('startLat').innerHTML = startPos.coords.latitude;
     // document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-    fetch('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + startPos.coords.latitude + ',' + startPos.coords.longitude + '&radius=1500&type=restaurant&key=AIzaSyCYAYnOOBhka5cjoRiMYY_f-gzwbKy1eu4')
+    fetch('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + startPos.coords.latitude + ',' + startPos.coords.longitude + '&radius=1500&type=restaurant&fields=photos,formatted_address&key=AIzaSyCYAYnOOBhka5cjoRiMYY_f-gzwbKy1eu4')
     .then(function(response) {
       return response.json();
     })
     .then(function(myJson) {
       var randomNumber = Math.floor(Math.random() * (myJson.results.length))
-      console.log(myJson.results.length);
-      console.log(randomNumber);
       var place = myJson.results[randomNumber];
       var photoId = place.photos[0].photo_reference;
       document.getElementById("label").innerHTML = place.name;
+      document.getElementById("sublabel").innerHTML = place.vicinity;
       fetch('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1800&photoreference=' + photoId + '&key=AIzaSyCYAYnOOBhka5cjoRiMYY_f-gzwbKy1eu4')
       .then(response => response.blob())
       .then(images => {
