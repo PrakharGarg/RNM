@@ -6,8 +6,8 @@ window.onload = function() {
 
   var geoSuccess = function(position) {
     startPos = position;
-    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+    // document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    // document.getElementById('startLon').innerHTML = startPos.coords.longitude;
     fetch('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + startPos.coords.latitude + ',' + startPos.coords.longitude + '&radius=1500&type=restaurant&keyword=cafe&key=AIzaSyCYAYnOOBhka5cjoRiMYY_f-gzwbKy1eu4')
     .then(function(response) {
       return response.json();
@@ -16,10 +16,11 @@ window.onload = function() {
       var randomNumber = Math.floor(Math.random() * (myJson.results.length))
       var photoId = myJson.results[randomNumber].photos[0].photo_reference;
 
-      fetch('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photoId + '&key=AIzaSyCYAYnOOBhka5cjoRiMYY_f-gzwbKy1eu4')
-      .then(function(response) {
-        // document.getElementById('startLat').innerHTML = response;
-        console.log(response);
+      fetch('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1080&photoreference=' + photoId + '&key=AIzaSyCYAYnOOBhka5cjoRiMYY_f-gzwbKy1eu4')
+      .then(response => response.blob())
+      .then(images => {
+        var outside =  URL.createObjectURL(images);
+        document.getElementById("image").src=outside;
       })
 
     });
