@@ -8,7 +8,7 @@ window.onload = function() {
     startPos = position;
     // document.getElementById('startLat').innerHTML = startPos.coords.latitude;
     // document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-    fetch('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + startPos.coords.latitude + ',' + startPos.coords.longitude + '&radius=1500&type=restaurant&fields=photos,formatted_address&key=AIzaSyCYAYnOOBhka5cjoRiMYY_f-gzwbKy1eu4')
+    fetch('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + startPos.coords.latitude + ',' + startPos.coords.longitude + '&radius=1500&type=restaurant&fields=photos,formatted_address&key=')
     .then(function(response) {
       return response.json();
     })
@@ -18,7 +18,7 @@ window.onload = function() {
       var photoId = place.photos[0].photo_reference;
       document.getElementById("label").innerHTML = place.name;
       document.getElementById("sublabel").innerHTML = place.vicinity;
-      fetch('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1800&photoreference=' + photoId + '&key=AIzaSyCYAYnOOBhka5cjoRiMYY_f-gzwbKy1eu4')
+      fetch('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1800&photoreference=' + photoId + '&key=')
       .then(response => response.blob())
       .then(images => {
         var outside =  URL.createObjectURL(images);
@@ -55,7 +55,7 @@ window.onload = function() {
     });
 
     xhr.open("GET", "https://api.pexels.com/v1/search?query=food+query&per_page=40&page=1");
-    xhr.setRequestHeader("Authorization", "563492ad6f91700001000001c20b062eee2e459f912a73a485e59b66");
+    xhr.setRequestHeader("Authorization", "");
     xhr.setRequestHeader("Cache-Control", "no-cache");
     xhr.setRequestHeader("Postman-Token", "40fb47e0-1bce-48e6-9d3e-e68b1be37bfb");
 
